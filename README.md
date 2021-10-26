@@ -14,11 +14,7 @@ On the left of the Figure, we can see that any execution starts with action *A*.
 
 # Repo Organization
 
- In the videos folder one can find a simulation of the simple program shown above in the gemoc omniscient debugger where it is possible to choose a specific interleaving and to go back in time to explore another interleaving captured by the concurrency model. In another video it is shown how to obtain the state space corresponding to the second picture in this readme (note that the second picture is a graphical representation of the generated dot file provided by the [Graphia](https://graphia.app/) tool) 
- 
-
-   * https://user-images.githubusercontent.com/6162718/138900974-08778975-28d7-4816-9994-ac58e83a0288.mp4
-   * https://user-images.githubusercontent.com/6162718/138901178-6c15e8a3-349f-471c-9585-44f9afdfd475.mp4
+ In the videos folder one can find [a simulation of the simple program shown above in the gemoc omniscient debugger](videos/simulationExplorationDifferentInterleaving.mkv) where it is possible to choose a specific interleaving and to go back in time to explore another interleaving captured by the concurrency model. In another video it is shown [how to obtain the state space corresponding to the second picture in this readme](videos/exhaustiveSimulation.mkv) (note that the second picture is a graphical representation of the generated dot file provided by the [Graphia](https://graphia.app/) tool) 
 
 
  In the *LanguageDefinition* folder, you can find the different infredient that constitute the language according to the [GEMOC approach](https://hal.inria.fr/hal-00850770v2). Most of the artifacts are generated code and only few lines of code where written to develop this language.
