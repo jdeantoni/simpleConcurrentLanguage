@@ -1,12 +1,15 @@
-# simpleConcurrentLanguage
-a very simple concurrent language to illustrate GEMOc model of concurrency
+# the "Simple" Concurrent Language
+a very simple concurrent language to illustrate GEMOC model of concurrency
 
 Let us consider the "Simple" language composed by *Statement*s where a statement can be an *Action*, a *Fork* with its parent and child *Block* of statements that can be executed concurrently, or a *Join*. The Figure below provides a program written in the Simple language together with its abstract syntax tree. 
+
+<img src="https://user-images.githubusercontent.com/6162718/138898684-dea66ba0-b830-4934-b0e3-3b38526a4ff0.png" alt="a Simple program" width="200"/>
 ![Screenshot_simpleConcurrentExample](https://user-images.githubusercontent.com/6162718/138898684-dea66ba0-b830-4934-b0e3-3b38526a4ff0.png)
 
 
 In this example, a computer scientist intuitively figures out that the *B;C* sequence is not ordered with the *D;E* one. The role of the concurrency model is to symbolically capture the different interleaving that can possibly appear in a program. To illustrate, the Figure below represents in extension the possible interleaving between all actions of the illustrative program presented above.
   
+<img src="https://user-images.githubusercontent.com/6162718/138898862-b8cf355f-256a-41c5-a39b-34a2284b2bdb.png" alt="possible interleavings in the Simple program" width="200"/> 
 ![Screenshot_concurrStateSpace](https://user-images.githubusercontent.com/6162718/138898862-b8cf355f-256a-41c5-a39b-34a2284b2bdb.png)
 
 
