@@ -1,0 +1,8 @@
+RunStaR concurrLang
+import "platform:/plugin/fr.univcotedazur.i3s.kairos.moccml.example.concurrlang/model/generated/ConcurrLang.ecore";
+import "platform:/plugin/fr.univcotedazur.i3S.kairos.moccml.example.concurrlang.moccml/ecl/concurrLang.ecl";
+
+create: Paint((100,200,200), type=BACKGROUND) for concurrLang.Action BEFORE execute; 
+create: Paint((255,100,100), type=BACKGROUND, persistent=TRUE) for concurrLang.Fork BEFORE execute;
+create: Paint(clear, type=BACKGROUND) for concurrLang.Fork BEFORE finish;
+create: Paint((255,100,100), type=BACKGROUND) for concurrLang.Join BEFORE execute;

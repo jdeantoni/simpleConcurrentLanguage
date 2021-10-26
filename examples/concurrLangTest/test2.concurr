@@ -1,0 +1,9 @@
+A;
+fork f1: 
+   parent -> { B; C; }
+   child  -> { D; fork f2: parent -> { E1; E2; }
+   						   child  -> { E3; E4; }
+   						   join f2;
+   			 }
+join f1;
+F; 

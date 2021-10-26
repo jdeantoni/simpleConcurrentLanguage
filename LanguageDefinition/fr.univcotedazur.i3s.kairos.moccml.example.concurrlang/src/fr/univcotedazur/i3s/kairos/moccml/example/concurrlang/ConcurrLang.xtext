@@ -1,0 +1,27 @@
+grammar fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang with org.eclipse.xtext.common.Terminals
+
+generate concurrLang "http://www.univcotedazur.fr/i3s/kairos/moccml/example/concurrlang/ConcurrLang"
+
+Model:
+	statements+=Statements*;
+	
+Statements:
+	(Action | Fork | Join) (";")? 
+; 
+
+Join:
+	(name=ID ":")? 
+	"join" ("(")?fork=[Fork|ID](")")?
+;
+
+Fork:
+	"fork" name=ID ":" "parent" "->" parent= Block "child" "->" child= Block
+;
+
+Block:
+ (name=ID)?"{" (statements+=Statements)+ "}"	
+;
+
+Action:
+	name=ID
+;
