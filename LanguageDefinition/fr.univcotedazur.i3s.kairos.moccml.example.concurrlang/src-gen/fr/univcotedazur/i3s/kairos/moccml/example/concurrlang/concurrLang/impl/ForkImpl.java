@@ -7,13 +7,17 @@ import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block;
 import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.ConcurrLangPackage;
 import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.ForkImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.ForkImpl#getChild <em>Child</em>}</li>
+ *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.ForkImpl#getForkedBlocks <em>Forked Blocks</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,24 +35,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ForkImpl extends StatementsImpl implements Fork
 {
   /**
-   * The cached value of the '{@link #getParent() <em>Parent</em>}' containment reference.
+   * The cached value of the '{@link #getForkedBlocks() <em>Forked Blocks</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParent()
+   * @see #getForkedBlocks()
    * @generated
    * @ordered
    */
-  protected Block parent;
-
-  /**
-   * The cached value of the '{@link #getChild() <em>Child</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getChild()
-   * @generated
-   * @ordered
-   */
-  protected Block child;
+  protected EList<Block> forkedBlocks;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,98 +71,13 @@ public class ForkImpl extends StatementsImpl implements Fork
    * @generated
    */
   @Override
-  public Block getParent()
+  public EList<Block> getForkedBlocks()
   {
-    return parent;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetParent(Block newParent, NotificationChain msgs)
-  {
-    Block oldParent = parent;
-    parent = newParent;
-    if (eNotificationRequired())
+    if (forkedBlocks == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConcurrLangPackage.FORK__PARENT, oldParent, newParent);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      forkedBlocks = new EObjectContainmentEList<Block>(Block.class, this, ConcurrLangPackage.FORK__FORKED_BLOCKS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setParent(Block newParent)
-  {
-    if (newParent != parent)
-    {
-      NotificationChain msgs = null;
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConcurrLangPackage.FORK__PARENT, null, msgs);
-      if (newParent != null)
-        msgs = ((InternalEObject)newParent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConcurrLangPackage.FORK__PARENT, null, msgs);
-      msgs = basicSetParent(newParent, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ConcurrLangPackage.FORK__PARENT, newParent, newParent));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Block getChild()
-  {
-    return child;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetChild(Block newChild, NotificationChain msgs)
-  {
-    Block oldChild = child;
-    child = newChild;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConcurrLangPackage.FORK__CHILD, oldChild, newChild);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setChild(Block newChild)
-  {
-    if (newChild != child)
-    {
-      NotificationChain msgs = null;
-      if (child != null)
-        msgs = ((InternalEObject)child).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConcurrLangPackage.FORK__CHILD, null, msgs);
-      if (newChild != null)
-        msgs = ((InternalEObject)newChild).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConcurrLangPackage.FORK__CHILD, null, msgs);
-      msgs = basicSetChild(newChild, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ConcurrLangPackage.FORK__CHILD, newChild, newChild));
+    return forkedBlocks;
   }
 
   /**
@@ -182,10 +90,8 @@ public class ForkImpl extends StatementsImpl implements Fork
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.FORK__PARENT:
-        return basicSetParent(null, msgs);
-      case ConcurrLangPackage.FORK__CHILD:
-        return basicSetChild(null, msgs);
+      case ConcurrLangPackage.FORK__FORKED_BLOCKS:
+        return ((InternalEList<?>)getForkedBlocks()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -200,10 +106,8 @@ public class ForkImpl extends StatementsImpl implements Fork
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.FORK__PARENT:
-        return getParent();
-      case ConcurrLangPackage.FORK__CHILD:
-        return getChild();
+      case ConcurrLangPackage.FORK__FORKED_BLOCKS:
+        return getForkedBlocks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,16 +117,15 @@ public class ForkImpl extends StatementsImpl implements Fork
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.FORK__PARENT:
-        setParent((Block)newValue);
-        return;
-      case ConcurrLangPackage.FORK__CHILD:
-        setChild((Block)newValue);
+      case ConcurrLangPackage.FORK__FORKED_BLOCKS:
+        getForkedBlocks().clear();
+        getForkedBlocks().addAll((Collection<? extends Block>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,11 +141,8 @@ public class ForkImpl extends StatementsImpl implements Fork
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.FORK__PARENT:
-        setParent((Block)null);
-        return;
-      case ConcurrLangPackage.FORK__CHILD:
-        setChild((Block)null);
+      case ConcurrLangPackage.FORK__FORKED_BLOCKS:
+        getForkedBlocks().clear();
         return;
     }
     super.eUnset(featureID);
@@ -258,10 +158,8 @@ public class ForkImpl extends StatementsImpl implements Fork
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.FORK__PARENT:
-        return parent != null;
-      case ConcurrLangPackage.FORK__CHILD:
-        return child != null;
+      case ConcurrLangPackage.FORK__FORKED_BLOCKS:
+        return forkedBlocks != null && !forkedBlocks.isEmpty();
     }
     return super.eIsSet(featureID);
   }

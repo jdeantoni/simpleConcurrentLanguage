@@ -263,60 +263,25 @@ ruleFork returns [EObject current=null]
 		{
 			newLeafNode(otherlv_2, grammarAccess.getForkAccess().getColonKeyword_2());
 		}
-		otherlv_3='parent'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getForkAccess().getParentKeyword_3());
-		}
-		otherlv_4='->'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_4());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getForkAccess().getParentBlockParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getForkAccess().getForkedBlocksBlockParserRuleCall_3_0());
 				}
-				lv_parent_5_0=ruleBlock
+				lv_forkedBlocks_3_0=ruleBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getForkRule());
 					}
-					set(
+					add(
 						$current,
-						"parent",
-						lv_parent_5_0,
+						"forkedBlocks",
+						lv_forkedBlocks_3_0,
 						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Block");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
-		otherlv_6='child'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getForkAccess().getChildKeyword_6());
-		}
-		otherlv_7='->'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_7());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getForkAccess().getChildBlockParserRuleCall_8_0());
-				}
-				lv_child_8_0=ruleBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getForkRule());
-					}
-					set(
-						$current,
-						"child",
-						lv_child_8_0,
-						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Block");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
+		)+
 	)
 ;
 
@@ -336,34 +301,26 @@ ruleBlock returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			(
-				lv_name_0_0=RULE_ID
-				{
-					newLeafNode(lv_name_0_0, grammarAccess.getBlockAccess().getNameIDTerminalRuleCall_0_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBlockRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_0_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)?
-		otherlv_1='{'
+		otherlv_0='|'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getBlockAccess().getVerticalLineKeyword_0());
+		}
+		(
+			otherlv_1='->'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getBlockAccess().getHyphenMinusGreaterThanSignKeyword_1());
+			}
+		)?
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_3_0());
 				}
-				lv_statements_2_0=ruleStatements
+				lv_statements_3_0=ruleStatements
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBlockRule());
@@ -371,15 +328,15 @@ ruleBlock returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_2_0,
+						lv_statements_3_0,
 						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Statements");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_3='}'
+		otherlv_4='}'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;

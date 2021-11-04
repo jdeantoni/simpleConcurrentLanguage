@@ -3,6 +3,7 @@
  */
 package fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,8 +14,7 @@ package fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getParent <em>Parent</em>}</li>
- *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getChild <em>Child</em>}</li>
+ *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getForkedBlocks <em>Forked Blocks</em>}</li>
  * </ul>
  *
  * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.ConcurrLangPackage#getFork()
@@ -24,47 +24,15 @@ package fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang;
 public interface Fork extends Statements
 {
   /**
-   * Returns the value of the '<em><b>Parent</b></em>' containment reference.
+   * Returns the value of the '<em><b>Forked Blocks</b></em>' containment reference list.
+   * The list contents are of type {@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parent</em>' containment reference.
-   * @see #setParent(Block)
-   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.ConcurrLangPackage#getFork_Parent()
+   * @return the value of the '<em>Forked Blocks</em>' containment reference list.
+   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.ConcurrLangPackage#getFork_ForkedBlocks()
    * @model containment="true"
    * @generated
    */
-  Block getParent();
-
-  /**
-   * Sets the value of the '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getParent <em>Parent</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parent</em>' containment reference.
-   * @see #getParent()
-   * @generated
-   */
-  void setParent(Block value);
-
-  /**
-   * Returns the value of the '<em><b>Child</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Child</em>' containment reference.
-   * @see #setChild(Block)
-   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.ConcurrLangPackage#getFork_Child()
-   * @model containment="true"
-   * @generated
-   */
-  Block getChild();
-
-  /**
-   * Sets the value of the '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getChild <em>Child</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Child</em>' containment reference.
-   * @see #getChild()
-   * @generated
-   */
-  void setChild(Block value);
+  EList<Block> getForkedBlocks();
 
 } // Fork

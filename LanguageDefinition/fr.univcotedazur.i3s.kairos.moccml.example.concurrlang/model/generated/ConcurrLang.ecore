@@ -13,13 +13,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="fork" eType="#//Fork"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Fork" eSuperTypes="#//Statements">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Block"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="child" eType="#//Block"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forkedBlocks" upperBound="-1"
+        eType="#//Block" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Block">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//Statements" containment="true"/>
   </eClassifiers>

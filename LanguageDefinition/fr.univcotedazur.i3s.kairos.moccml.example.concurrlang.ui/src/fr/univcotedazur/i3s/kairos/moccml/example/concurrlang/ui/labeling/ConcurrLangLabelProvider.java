@@ -3,15 +3,14 @@
  */
 package fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ui.labeling;
 
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+
 import com.google.inject.Inject;
 
 import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Action;
 import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block;
 import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork;
-import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Join;
-
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 /**
  * Provides labels for EObjects.
@@ -28,15 +27,11 @@ public class ConcurrLangLabelProvider extends DefaultEObjectLabelProvider {
 	// Labels and icons can be computed like this:
 	
 	String text(Block ele) {
-		if (((Fork)ele.eContainer()).getParent() == ele){
-			return "parent block";
-		}else {
-			return "child block";
-		}
+			return "block #"+((Fork)ele.eContainer()).getForkedBlocks().indexOf(ele);
 	}
-	String text(Join ele) {
-		return "Join "+ele.getFork().getName();
-	}
+//	String text(Join ele) {
+//		return "Join "+ele.getFork().getName();
+//	}
 	
 	String text(Action ele) {
 		return "Action "+ele.getName();
@@ -45,8 +40,5 @@ public class ConcurrLangLabelProvider extends DefaultEObjectLabelProvider {
 	String text(Fork ele) {
 		return "Fork "+ele.getName();
 	}
-//
-//	String image(Greeting ele) {
-//		return "Greeting.gif";
-//	}
+
 }

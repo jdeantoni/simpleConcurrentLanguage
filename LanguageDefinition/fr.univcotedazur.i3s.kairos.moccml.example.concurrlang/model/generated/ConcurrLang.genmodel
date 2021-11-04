@@ -16,11 +16,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ConcurrLang.ecore#//Join/fork"/>
     </genClasses>
     <genClasses ecoreClass="ConcurrLang.ecore#//Fork">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConcurrLang.ecore#//Fork/parent"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConcurrLang.ecore#//Fork/child"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConcurrLang.ecore#//Fork/forkedBlocks"/>
     </genClasses>
     <genClasses ecoreClass="ConcurrLang.ecore#//Block">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ConcurrLang.ecore#//Block/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConcurrLang.ecore#//Block/statements"/>
     </genClasses>
     <genClasses ecoreClass="ConcurrLang.ecore#//Action"/>

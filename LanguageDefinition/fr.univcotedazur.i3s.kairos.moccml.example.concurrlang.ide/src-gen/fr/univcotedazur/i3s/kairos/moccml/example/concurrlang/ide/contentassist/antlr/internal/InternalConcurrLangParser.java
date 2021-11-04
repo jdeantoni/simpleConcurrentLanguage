@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalConcurrLangParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "';'", "'join'", "'('", "')'", "':'", "'fork'", "'parent'", "'->'", "'child'", "'{'", "'}'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "';'", "'join'", "'('", "')'", "':'", "'fork'", "'|'", "'->'", "'{'", "'}'"
     };
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
@@ -42,7 +42,6 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
     public static final int RULE_INT=5;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__20=20;
-    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -573,11 +572,11 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
                 {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==EOF||LA2_1==RULE_ID||(LA2_1>=11 && LA2_1<=12)||LA2_1==16||LA2_1==21) ) {
-                    alt2=1;
-                }
-                else if ( (LA2_1==15) ) {
+                if ( (LA2_1==15) ) {
                     alt2=3;
+                }
+                else if ( (LA2_1==EOF||LA2_1==RULE_ID||(LA2_1>=11 && LA2_1<=12)||LA2_1==16||LA2_1==20) ) {
+                    alt2=1;
                 }
                 else {
                     NoViableAltException nvae =
@@ -1677,22 +1676,17 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Fork__Group__3"
-    // InternalConcurrLang.g:553:1: rule__Fork__Group__3 : rule__Fork__Group__3__Impl rule__Fork__Group__4 ;
+    // InternalConcurrLang.g:553:1: rule__Fork__Group__3 : rule__Fork__Group__3__Impl ;
     public final void rule__Fork__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:557:1: ( rule__Fork__Group__3__Impl rule__Fork__Group__4 )
-            // InternalConcurrLang.g:558:2: rule__Fork__Group__3__Impl rule__Fork__Group__4
+            // InternalConcurrLang.g:557:1: ( rule__Fork__Group__3__Impl )
+            // InternalConcurrLang.g:558:2: rule__Fork__Group__3__Impl
             {
-            pushFollow(FOLLOW_11);
-            rule__Fork__Group__3__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__Fork__Group__4();
+            rule__Fork__Group__3__Impl();
 
             state._fsp--;
 
@@ -1715,21 +1709,74 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Fork__Group__3__Impl"
-    // InternalConcurrLang.g:565:1: rule__Fork__Group__3__Impl : ( 'parent' ) ;
+    // InternalConcurrLang.g:564:1: rule__Fork__Group__3__Impl : ( ( ( rule__Fork__ForkedBlocksAssignment_3 ) ) ( ( rule__Fork__ForkedBlocksAssignment_3 )* ) ) ;
     public final void rule__Fork__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:569:1: ( ( 'parent' ) )
-            // InternalConcurrLang.g:570:1: ( 'parent' )
+            // InternalConcurrLang.g:568:1: ( ( ( ( rule__Fork__ForkedBlocksAssignment_3 ) ) ( ( rule__Fork__ForkedBlocksAssignment_3 )* ) ) )
+            // InternalConcurrLang.g:569:1: ( ( ( rule__Fork__ForkedBlocksAssignment_3 ) ) ( ( rule__Fork__ForkedBlocksAssignment_3 )* ) )
             {
-            // InternalConcurrLang.g:570:1: ( 'parent' )
-            // InternalConcurrLang.g:571:2: 'parent'
+            // InternalConcurrLang.g:569:1: ( ( ( rule__Fork__ForkedBlocksAssignment_3 ) ) ( ( rule__Fork__ForkedBlocksAssignment_3 )* ) )
+            // InternalConcurrLang.g:570:2: ( ( rule__Fork__ForkedBlocksAssignment_3 ) ) ( ( rule__Fork__ForkedBlocksAssignment_3 )* )
             {
-             before(grammarAccess.getForkAccess().getParentKeyword_3()); 
-            match(input,17,FOLLOW_2); 
-             after(grammarAccess.getForkAccess().getParentKeyword_3()); 
+            // InternalConcurrLang.g:570:2: ( ( rule__Fork__ForkedBlocksAssignment_3 ) )
+            // InternalConcurrLang.g:571:3: ( rule__Fork__ForkedBlocksAssignment_3 )
+            {
+             before(grammarAccess.getForkAccess().getForkedBlocksAssignment_3()); 
+            // InternalConcurrLang.g:572:3: ( rule__Fork__ForkedBlocksAssignment_3 )
+            // InternalConcurrLang.g:572:4: rule__Fork__ForkedBlocksAssignment_3
+            {
+            pushFollow(FOLLOW_11);
+            rule__Fork__ForkedBlocksAssignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getForkAccess().getForkedBlocksAssignment_3()); 
+
+            }
+
+            // InternalConcurrLang.g:575:2: ( ( rule__Fork__ForkedBlocksAssignment_3 )* )
+            // InternalConcurrLang.g:576:3: ( rule__Fork__ForkedBlocksAssignment_3 )*
+            {
+             before(grammarAccess.getForkAccess().getForkedBlocksAssignment_3()); 
+            // InternalConcurrLang.g:577:3: ( rule__Fork__ForkedBlocksAssignment_3 )*
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
+
+                if ( (LA7_0==17) ) {
+                    alt7=1;
+                }
+
+
+                switch (alt7) {
+            	case 1 :
+            	    // InternalConcurrLang.g:577:4: rule__Fork__ForkedBlocksAssignment_3
+            	    {
+            	    pushFollow(FOLLOW_11);
+            	    rule__Fork__ForkedBlocksAssignment_3();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop7;
+                }
+            } while (true);
+
+             after(grammarAccess.getForkAccess().getForkedBlocksAssignment_3()); 
+
+            }
+
 
             }
 
@@ -1751,405 +1798,15 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Fork__Group__3__Impl"
 
 
-    // $ANTLR start "rule__Fork__Group__4"
-    // InternalConcurrLang.g:580:1: rule__Fork__Group__4 : rule__Fork__Group__4__Impl rule__Fork__Group__5 ;
-    public final void rule__Fork__Group__4() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:584:1: ( rule__Fork__Group__4__Impl rule__Fork__Group__5 )
-            // InternalConcurrLang.g:585:2: rule__Fork__Group__4__Impl rule__Fork__Group__5
-            {
-            pushFollow(FOLLOW_12);
-            rule__Fork__Group__4__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Fork__Group__5();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__4"
-
-
-    // $ANTLR start "rule__Fork__Group__4__Impl"
-    // InternalConcurrLang.g:592:1: rule__Fork__Group__4__Impl : ( '->' ) ;
-    public final void rule__Fork__Group__4__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:596:1: ( ( '->' ) )
-            // InternalConcurrLang.g:597:1: ( '->' )
-            {
-            // InternalConcurrLang.g:597:1: ( '->' )
-            // InternalConcurrLang.g:598:2: '->'
-            {
-             before(grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_4()); 
-            match(input,18,FOLLOW_2); 
-             after(grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_4()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__4__Impl"
-
-
-    // $ANTLR start "rule__Fork__Group__5"
-    // InternalConcurrLang.g:607:1: rule__Fork__Group__5 : rule__Fork__Group__5__Impl rule__Fork__Group__6 ;
-    public final void rule__Fork__Group__5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:611:1: ( rule__Fork__Group__5__Impl rule__Fork__Group__6 )
-            // InternalConcurrLang.g:612:2: rule__Fork__Group__5__Impl rule__Fork__Group__6
-            {
-            pushFollow(FOLLOW_13);
-            rule__Fork__Group__5__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Fork__Group__6();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__5"
-
-
-    // $ANTLR start "rule__Fork__Group__5__Impl"
-    // InternalConcurrLang.g:619:1: rule__Fork__Group__5__Impl : ( ( rule__Fork__ParentAssignment_5 ) ) ;
-    public final void rule__Fork__Group__5__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:623:1: ( ( ( rule__Fork__ParentAssignment_5 ) ) )
-            // InternalConcurrLang.g:624:1: ( ( rule__Fork__ParentAssignment_5 ) )
-            {
-            // InternalConcurrLang.g:624:1: ( ( rule__Fork__ParentAssignment_5 ) )
-            // InternalConcurrLang.g:625:2: ( rule__Fork__ParentAssignment_5 )
-            {
-             before(grammarAccess.getForkAccess().getParentAssignment_5()); 
-            // InternalConcurrLang.g:626:2: ( rule__Fork__ParentAssignment_5 )
-            // InternalConcurrLang.g:626:3: rule__Fork__ParentAssignment_5
-            {
-            pushFollow(FOLLOW_2);
-            rule__Fork__ParentAssignment_5();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getForkAccess().getParentAssignment_5()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__5__Impl"
-
-
-    // $ANTLR start "rule__Fork__Group__6"
-    // InternalConcurrLang.g:634:1: rule__Fork__Group__6 : rule__Fork__Group__6__Impl rule__Fork__Group__7 ;
-    public final void rule__Fork__Group__6() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:638:1: ( rule__Fork__Group__6__Impl rule__Fork__Group__7 )
-            // InternalConcurrLang.g:639:2: rule__Fork__Group__6__Impl rule__Fork__Group__7
-            {
-            pushFollow(FOLLOW_11);
-            rule__Fork__Group__6__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Fork__Group__7();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__6"
-
-
-    // $ANTLR start "rule__Fork__Group__6__Impl"
-    // InternalConcurrLang.g:646:1: rule__Fork__Group__6__Impl : ( 'child' ) ;
-    public final void rule__Fork__Group__6__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:650:1: ( ( 'child' ) )
-            // InternalConcurrLang.g:651:1: ( 'child' )
-            {
-            // InternalConcurrLang.g:651:1: ( 'child' )
-            // InternalConcurrLang.g:652:2: 'child'
-            {
-             before(grammarAccess.getForkAccess().getChildKeyword_6()); 
-            match(input,19,FOLLOW_2); 
-             after(grammarAccess.getForkAccess().getChildKeyword_6()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__6__Impl"
-
-
-    // $ANTLR start "rule__Fork__Group__7"
-    // InternalConcurrLang.g:661:1: rule__Fork__Group__7 : rule__Fork__Group__7__Impl rule__Fork__Group__8 ;
-    public final void rule__Fork__Group__7() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:665:1: ( rule__Fork__Group__7__Impl rule__Fork__Group__8 )
-            // InternalConcurrLang.g:666:2: rule__Fork__Group__7__Impl rule__Fork__Group__8
-            {
-            pushFollow(FOLLOW_12);
-            rule__Fork__Group__7__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Fork__Group__8();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__7"
-
-
-    // $ANTLR start "rule__Fork__Group__7__Impl"
-    // InternalConcurrLang.g:673:1: rule__Fork__Group__7__Impl : ( '->' ) ;
-    public final void rule__Fork__Group__7__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:677:1: ( ( '->' ) )
-            // InternalConcurrLang.g:678:1: ( '->' )
-            {
-            // InternalConcurrLang.g:678:1: ( '->' )
-            // InternalConcurrLang.g:679:2: '->'
-            {
-             before(grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_7()); 
-            match(input,18,FOLLOW_2); 
-             after(grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_7()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__7__Impl"
-
-
-    // $ANTLR start "rule__Fork__Group__8"
-    // InternalConcurrLang.g:688:1: rule__Fork__Group__8 : rule__Fork__Group__8__Impl ;
-    public final void rule__Fork__Group__8() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:692:1: ( rule__Fork__Group__8__Impl )
-            // InternalConcurrLang.g:693:2: rule__Fork__Group__8__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__Fork__Group__8__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__8"
-
-
-    // $ANTLR start "rule__Fork__Group__8__Impl"
-    // InternalConcurrLang.g:699:1: rule__Fork__Group__8__Impl : ( ( rule__Fork__ChildAssignment_8 ) ) ;
-    public final void rule__Fork__Group__8__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:703:1: ( ( ( rule__Fork__ChildAssignment_8 ) ) )
-            // InternalConcurrLang.g:704:1: ( ( rule__Fork__ChildAssignment_8 ) )
-            {
-            // InternalConcurrLang.g:704:1: ( ( rule__Fork__ChildAssignment_8 ) )
-            // InternalConcurrLang.g:705:2: ( rule__Fork__ChildAssignment_8 )
-            {
-             before(grammarAccess.getForkAccess().getChildAssignment_8()); 
-            // InternalConcurrLang.g:706:2: ( rule__Fork__ChildAssignment_8 )
-            // InternalConcurrLang.g:706:3: rule__Fork__ChildAssignment_8
-            {
-            pushFollow(FOLLOW_2);
-            rule__Fork__ChildAssignment_8();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getForkAccess().getChildAssignment_8()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__Group__8__Impl"
-
-
     // $ANTLR start "rule__Block__Group__0"
-    // InternalConcurrLang.g:715:1: rule__Block__Group__0 : rule__Block__Group__0__Impl rule__Block__Group__1 ;
+    // InternalConcurrLang.g:587:1: rule__Block__Group__0 : rule__Block__Group__0__Impl rule__Block__Group__1 ;
     public final void rule__Block__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:719:1: ( rule__Block__Group__0__Impl rule__Block__Group__1 )
-            // InternalConcurrLang.g:720:2: rule__Block__Group__0__Impl rule__Block__Group__1
+            // InternalConcurrLang.g:591:1: ( rule__Block__Group__0__Impl rule__Block__Group__1 )
+            // InternalConcurrLang.g:592:2: rule__Block__Group__0__Impl rule__Block__Group__1
             {
             pushFollow(FOLLOW_12);
             rule__Block__Group__0__Impl();
@@ -2180,42 +1837,21 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__0__Impl"
-    // InternalConcurrLang.g:727:1: rule__Block__Group__0__Impl : ( ( rule__Block__NameAssignment_0 )? ) ;
+    // InternalConcurrLang.g:599:1: rule__Block__Group__0__Impl : ( '|' ) ;
     public final void rule__Block__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:731:1: ( ( ( rule__Block__NameAssignment_0 )? ) )
-            // InternalConcurrLang.g:732:1: ( ( rule__Block__NameAssignment_0 )? )
+            // InternalConcurrLang.g:603:1: ( ( '|' ) )
+            // InternalConcurrLang.g:604:1: ( '|' )
             {
-            // InternalConcurrLang.g:732:1: ( ( rule__Block__NameAssignment_0 )? )
-            // InternalConcurrLang.g:733:2: ( rule__Block__NameAssignment_0 )?
+            // InternalConcurrLang.g:604:1: ( '|' )
+            // InternalConcurrLang.g:605:2: '|'
             {
-             before(grammarAccess.getBlockAccess().getNameAssignment_0()); 
-            // InternalConcurrLang.g:734:2: ( rule__Block__NameAssignment_0 )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
-
-            if ( (LA7_0==RULE_ID) ) {
-                alt7=1;
-            }
-            switch (alt7) {
-                case 1 :
-                    // InternalConcurrLang.g:734:3: rule__Block__NameAssignment_0
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__Block__NameAssignment_0();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getBlockAccess().getNameAssignment_0()); 
+             before(grammarAccess.getBlockAccess().getVerticalLineKeyword_0()); 
+            match(input,17,FOLLOW_2); 
+             after(grammarAccess.getBlockAccess().getVerticalLineKeyword_0()); 
 
             }
 
@@ -2238,16 +1874,16 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__1"
-    // InternalConcurrLang.g:742:1: rule__Block__Group__1 : rule__Block__Group__1__Impl rule__Block__Group__2 ;
+    // InternalConcurrLang.g:614:1: rule__Block__Group__1 : rule__Block__Group__1__Impl rule__Block__Group__2 ;
     public final void rule__Block__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:746:1: ( rule__Block__Group__1__Impl rule__Block__Group__2 )
-            // InternalConcurrLang.g:747:2: rule__Block__Group__1__Impl rule__Block__Group__2
+            // InternalConcurrLang.g:618:1: ( rule__Block__Group__1__Impl rule__Block__Group__2 )
+            // InternalConcurrLang.g:619:2: rule__Block__Group__1__Impl rule__Block__Group__2
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_12);
             rule__Block__Group__1__Impl();
 
             state._fsp--;
@@ -2276,21 +1912,38 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__1__Impl"
-    // InternalConcurrLang.g:754:1: rule__Block__Group__1__Impl : ( '{' ) ;
+    // InternalConcurrLang.g:626:1: rule__Block__Group__1__Impl : ( ( '->' )? ) ;
     public final void rule__Block__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:758:1: ( ( '{' ) )
-            // InternalConcurrLang.g:759:1: ( '{' )
+            // InternalConcurrLang.g:630:1: ( ( ( '->' )? ) )
+            // InternalConcurrLang.g:631:1: ( ( '->' )? )
             {
-            // InternalConcurrLang.g:759:1: ( '{' )
-            // InternalConcurrLang.g:760:2: '{'
+            // InternalConcurrLang.g:631:1: ( ( '->' )? )
+            // InternalConcurrLang.g:632:2: ( '->' )?
             {
-             before(grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_1()); 
-            match(input,20,FOLLOW_2); 
-             after(grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_1()); 
+             before(grammarAccess.getBlockAccess().getHyphenMinusGreaterThanSignKeyword_1()); 
+            // InternalConcurrLang.g:633:2: ( '->' )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
+
+            if ( (LA8_0==18) ) {
+                alt8=1;
+            }
+            switch (alt8) {
+                case 1 :
+                    // InternalConcurrLang.g:633:3: '->'
+                    {
+                    match(input,18,FOLLOW_2); 
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getBlockAccess().getHyphenMinusGreaterThanSignKeyword_1()); 
 
             }
 
@@ -2313,16 +1966,16 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__2"
-    // InternalConcurrLang.g:769:1: rule__Block__Group__2 : rule__Block__Group__2__Impl rule__Block__Group__3 ;
+    // InternalConcurrLang.g:641:1: rule__Block__Group__2 : rule__Block__Group__2__Impl rule__Block__Group__3 ;
     public final void rule__Block__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:773:1: ( rule__Block__Group__2__Impl rule__Block__Group__3 )
-            // InternalConcurrLang.g:774:2: rule__Block__Group__2__Impl rule__Block__Group__3
+            // InternalConcurrLang.g:645:1: ( rule__Block__Group__2__Impl rule__Block__Group__3 )
+            // InternalConcurrLang.g:646:2: rule__Block__Group__2__Impl rule__Block__Group__3
             {
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_5);
             rule__Block__Group__2__Impl();
 
             state._fsp--;
@@ -2351,74 +2004,21 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__2__Impl"
-    // InternalConcurrLang.g:781:1: rule__Block__Group__2__Impl : ( ( ( rule__Block__StatementsAssignment_2 ) ) ( ( rule__Block__StatementsAssignment_2 )* ) ) ;
+    // InternalConcurrLang.g:653:1: rule__Block__Group__2__Impl : ( '{' ) ;
     public final void rule__Block__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:785:1: ( ( ( ( rule__Block__StatementsAssignment_2 ) ) ( ( rule__Block__StatementsAssignment_2 )* ) ) )
-            // InternalConcurrLang.g:786:1: ( ( ( rule__Block__StatementsAssignment_2 ) ) ( ( rule__Block__StatementsAssignment_2 )* ) )
+            // InternalConcurrLang.g:657:1: ( ( '{' ) )
+            // InternalConcurrLang.g:658:1: ( '{' )
             {
-            // InternalConcurrLang.g:786:1: ( ( ( rule__Block__StatementsAssignment_2 ) ) ( ( rule__Block__StatementsAssignment_2 )* ) )
-            // InternalConcurrLang.g:787:2: ( ( rule__Block__StatementsAssignment_2 ) ) ( ( rule__Block__StatementsAssignment_2 )* )
+            // InternalConcurrLang.g:658:1: ( '{' )
+            // InternalConcurrLang.g:659:2: '{'
             {
-            // InternalConcurrLang.g:787:2: ( ( rule__Block__StatementsAssignment_2 ) )
-            // InternalConcurrLang.g:788:3: ( rule__Block__StatementsAssignment_2 )
-            {
-             before(grammarAccess.getBlockAccess().getStatementsAssignment_2()); 
-            // InternalConcurrLang.g:789:3: ( rule__Block__StatementsAssignment_2 )
-            // InternalConcurrLang.g:789:4: rule__Block__StatementsAssignment_2
-            {
-            pushFollow(FOLLOW_3);
-            rule__Block__StatementsAssignment_2();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getBlockAccess().getStatementsAssignment_2()); 
-
-            }
-
-            // InternalConcurrLang.g:792:2: ( ( rule__Block__StatementsAssignment_2 )* )
-            // InternalConcurrLang.g:793:3: ( rule__Block__StatementsAssignment_2 )*
-            {
-             before(grammarAccess.getBlockAccess().getStatementsAssignment_2()); 
-            // InternalConcurrLang.g:794:3: ( rule__Block__StatementsAssignment_2 )*
-            loop8:
-            do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
-
-                if ( (LA8_0==RULE_ID||LA8_0==12||LA8_0==16) ) {
-                    alt8=1;
-                }
-
-
-                switch (alt8) {
-            	case 1 :
-            	    // InternalConcurrLang.g:794:4: rule__Block__StatementsAssignment_2
-            	    {
-            	    pushFollow(FOLLOW_3);
-            	    rule__Block__StatementsAssignment_2();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop8;
-                }
-            } while (true);
-
-             after(grammarAccess.getBlockAccess().getStatementsAssignment_2()); 
-
-            }
-
+             before(grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_2()); 
+            match(input,19,FOLLOW_2); 
+             after(grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
 
@@ -2441,17 +2041,22 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__3"
-    // InternalConcurrLang.g:803:1: rule__Block__Group__3 : rule__Block__Group__3__Impl ;
+    // InternalConcurrLang.g:668:1: rule__Block__Group__3 : rule__Block__Group__3__Impl rule__Block__Group__4 ;
     public final void rule__Block__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:807:1: ( rule__Block__Group__3__Impl )
-            // InternalConcurrLang.g:808:2: rule__Block__Group__3__Impl
+            // InternalConcurrLang.g:672:1: ( rule__Block__Group__3__Impl rule__Block__Group__4 )
+            // InternalConcurrLang.g:673:2: rule__Block__Group__3__Impl rule__Block__Group__4
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_13);
             rule__Block__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Block__Group__4();
 
             state._fsp--;
 
@@ -2474,21 +2079,74 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Block__Group__3__Impl"
-    // InternalConcurrLang.g:814:1: rule__Block__Group__3__Impl : ( '}' ) ;
+    // InternalConcurrLang.g:680:1: rule__Block__Group__3__Impl : ( ( ( rule__Block__StatementsAssignment_3 ) ) ( ( rule__Block__StatementsAssignment_3 )* ) ) ;
     public final void rule__Block__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:818:1: ( ( '}' ) )
-            // InternalConcurrLang.g:819:1: ( '}' )
+            // InternalConcurrLang.g:684:1: ( ( ( ( rule__Block__StatementsAssignment_3 ) ) ( ( rule__Block__StatementsAssignment_3 )* ) ) )
+            // InternalConcurrLang.g:685:1: ( ( ( rule__Block__StatementsAssignment_3 ) ) ( ( rule__Block__StatementsAssignment_3 )* ) )
             {
-            // InternalConcurrLang.g:819:1: ( '}' )
-            // InternalConcurrLang.g:820:2: '}'
+            // InternalConcurrLang.g:685:1: ( ( ( rule__Block__StatementsAssignment_3 ) ) ( ( rule__Block__StatementsAssignment_3 )* ) )
+            // InternalConcurrLang.g:686:2: ( ( rule__Block__StatementsAssignment_3 ) ) ( ( rule__Block__StatementsAssignment_3 )* )
             {
-             before(grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_3()); 
-            match(input,21,FOLLOW_2); 
-             after(grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_3()); 
+            // InternalConcurrLang.g:686:2: ( ( rule__Block__StatementsAssignment_3 ) )
+            // InternalConcurrLang.g:687:3: ( rule__Block__StatementsAssignment_3 )
+            {
+             before(grammarAccess.getBlockAccess().getStatementsAssignment_3()); 
+            // InternalConcurrLang.g:688:3: ( rule__Block__StatementsAssignment_3 )
+            // InternalConcurrLang.g:688:4: rule__Block__StatementsAssignment_3
+            {
+            pushFollow(FOLLOW_3);
+            rule__Block__StatementsAssignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBlockAccess().getStatementsAssignment_3()); 
+
+            }
+
+            // InternalConcurrLang.g:691:2: ( ( rule__Block__StatementsAssignment_3 )* )
+            // InternalConcurrLang.g:692:3: ( rule__Block__StatementsAssignment_3 )*
+            {
+             before(grammarAccess.getBlockAccess().getStatementsAssignment_3()); 
+            // InternalConcurrLang.g:693:3: ( rule__Block__StatementsAssignment_3 )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
+
+                if ( (LA9_0==RULE_ID||LA9_0==12||LA9_0==16) ) {
+                    alt9=1;
+                }
+
+
+                switch (alt9) {
+            	case 1 :
+            	    // InternalConcurrLang.g:693:4: rule__Block__StatementsAssignment_3
+            	    {
+            	    pushFollow(FOLLOW_3);
+            	    rule__Block__StatementsAssignment_3();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
+                }
+            } while (true);
+
+             after(grammarAccess.getBlockAccess().getStatementsAssignment_3()); 
+
+            }
+
 
             }
 
@@ -2510,18 +2168,88 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Block__Group__3__Impl"
 
 
+    // $ANTLR start "rule__Block__Group__4"
+    // InternalConcurrLang.g:702:1: rule__Block__Group__4 : rule__Block__Group__4__Impl ;
+    public final void rule__Block__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalConcurrLang.g:706:1: ( rule__Block__Group__4__Impl )
+            // InternalConcurrLang.g:707:2: rule__Block__Group__4__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Block__Group__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Block__Group__4"
+
+
+    // $ANTLR start "rule__Block__Group__4__Impl"
+    // InternalConcurrLang.g:713:1: rule__Block__Group__4__Impl : ( '}' ) ;
+    public final void rule__Block__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalConcurrLang.g:717:1: ( ( '}' ) )
+            // InternalConcurrLang.g:718:1: ( '}' )
+            {
+            // InternalConcurrLang.g:718:1: ( '}' )
+            // InternalConcurrLang.g:719:2: '}'
+            {
+             before(grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_4()); 
+            match(input,20,FOLLOW_2); 
+             after(grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Block__Group__4__Impl"
+
+
     // $ANTLR start "rule__Model__StatementsAssignment"
-    // InternalConcurrLang.g:830:1: rule__Model__StatementsAssignment : ( ruleStatements ) ;
+    // InternalConcurrLang.g:729:1: rule__Model__StatementsAssignment : ( ruleStatements ) ;
     public final void rule__Model__StatementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:834:1: ( ( ruleStatements ) )
-            // InternalConcurrLang.g:835:2: ( ruleStatements )
+            // InternalConcurrLang.g:733:1: ( ( ruleStatements ) )
+            // InternalConcurrLang.g:734:2: ( ruleStatements )
             {
-            // InternalConcurrLang.g:835:2: ( ruleStatements )
-            // InternalConcurrLang.g:836:3: ruleStatements
+            // InternalConcurrLang.g:734:2: ( ruleStatements )
+            // InternalConcurrLang.g:735:3: ruleStatements
             {
              before(grammarAccess.getModelAccess().getStatementsStatementsParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -2552,17 +2280,17 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Join__NameAssignment_0_0"
-    // InternalConcurrLang.g:845:1: rule__Join__NameAssignment_0_0 : ( RULE_ID ) ;
+    // InternalConcurrLang.g:744:1: rule__Join__NameAssignment_0_0 : ( RULE_ID ) ;
     public final void rule__Join__NameAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:849:1: ( ( RULE_ID ) )
-            // InternalConcurrLang.g:850:2: ( RULE_ID )
+            // InternalConcurrLang.g:748:1: ( ( RULE_ID ) )
+            // InternalConcurrLang.g:749:2: ( RULE_ID )
             {
-            // InternalConcurrLang.g:850:2: ( RULE_ID )
-            // InternalConcurrLang.g:851:3: RULE_ID
+            // InternalConcurrLang.g:749:2: ( RULE_ID )
+            // InternalConcurrLang.g:750:3: RULE_ID
             {
              before(grammarAccess.getJoinAccess().getNameIDTerminalRuleCall_0_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2589,21 +2317,21 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Join__ForkAssignment_3"
-    // InternalConcurrLang.g:860:1: rule__Join__ForkAssignment_3 : ( ( RULE_ID ) ) ;
+    // InternalConcurrLang.g:759:1: rule__Join__ForkAssignment_3 : ( ( RULE_ID ) ) ;
     public final void rule__Join__ForkAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:864:1: ( ( ( RULE_ID ) ) )
-            // InternalConcurrLang.g:865:2: ( ( RULE_ID ) )
+            // InternalConcurrLang.g:763:1: ( ( ( RULE_ID ) ) )
+            // InternalConcurrLang.g:764:2: ( ( RULE_ID ) )
             {
-            // InternalConcurrLang.g:865:2: ( ( RULE_ID ) )
-            // InternalConcurrLang.g:866:3: ( RULE_ID )
+            // InternalConcurrLang.g:764:2: ( ( RULE_ID ) )
+            // InternalConcurrLang.g:765:3: ( RULE_ID )
             {
              before(grammarAccess.getJoinAccess().getForkForkCrossReference_3_0()); 
-            // InternalConcurrLang.g:867:3: ( RULE_ID )
-            // InternalConcurrLang.g:868:4: RULE_ID
+            // InternalConcurrLang.g:766:3: ( RULE_ID )
+            // InternalConcurrLang.g:767:4: RULE_ID
             {
              before(grammarAccess.getJoinAccess().getForkForkIDTerminalRuleCall_3_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2634,17 +2362,17 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Fork__NameAssignment_1"
-    // InternalConcurrLang.g:879:1: rule__Fork__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalConcurrLang.g:778:1: rule__Fork__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Fork__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:883:1: ( ( RULE_ID ) )
-            // InternalConcurrLang.g:884:2: ( RULE_ID )
+            // InternalConcurrLang.g:782:1: ( ( RULE_ID ) )
+            // InternalConcurrLang.g:783:2: ( RULE_ID )
             {
-            // InternalConcurrLang.g:884:2: ( RULE_ID )
-            // InternalConcurrLang.g:885:3: RULE_ID
+            // InternalConcurrLang.g:783:2: ( RULE_ID )
+            // InternalConcurrLang.g:784:3: RULE_ID
             {
              before(grammarAccess.getForkAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2670,26 +2398,26 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Fork__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Fork__ParentAssignment_5"
-    // InternalConcurrLang.g:894:1: rule__Fork__ParentAssignment_5 : ( ruleBlock ) ;
-    public final void rule__Fork__ParentAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__Fork__ForkedBlocksAssignment_3"
+    // InternalConcurrLang.g:793:1: rule__Fork__ForkedBlocksAssignment_3 : ( ruleBlock ) ;
+    public final void rule__Fork__ForkedBlocksAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:898:1: ( ( ruleBlock ) )
-            // InternalConcurrLang.g:899:2: ( ruleBlock )
+            // InternalConcurrLang.g:797:1: ( ( ruleBlock ) )
+            // InternalConcurrLang.g:798:2: ( ruleBlock )
             {
-            // InternalConcurrLang.g:899:2: ( ruleBlock )
-            // InternalConcurrLang.g:900:3: ruleBlock
+            // InternalConcurrLang.g:798:2: ( ruleBlock )
+            // InternalConcurrLang.g:799:3: ruleBlock
             {
-             before(grammarAccess.getForkAccess().getParentBlockParserRuleCall_5_0()); 
+             before(grammarAccess.getForkAccess().getForkedBlocksBlockParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
             ruleBlock();
 
             state._fsp--;
 
-             after(grammarAccess.getForkAccess().getParentBlockParserRuleCall_5_0()); 
+             after(grammarAccess.getForkAccess().getForkedBlocksBlockParserRuleCall_3_0()); 
 
             }
 
@@ -2708,107 +2436,29 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Fork__ParentAssignment_5"
+    // $ANTLR end "rule__Fork__ForkedBlocksAssignment_3"
 
 
-    // $ANTLR start "rule__Fork__ChildAssignment_8"
-    // InternalConcurrLang.g:909:1: rule__Fork__ChildAssignment_8 : ( ruleBlock ) ;
-    public final void rule__Fork__ChildAssignment_8() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:913:1: ( ( ruleBlock ) )
-            // InternalConcurrLang.g:914:2: ( ruleBlock )
-            {
-            // InternalConcurrLang.g:914:2: ( ruleBlock )
-            // InternalConcurrLang.g:915:3: ruleBlock
-            {
-             before(grammarAccess.getForkAccess().getChildBlockParserRuleCall_8_0()); 
-            pushFollow(FOLLOW_2);
-            ruleBlock();
-
-            state._fsp--;
-
-             after(grammarAccess.getForkAccess().getChildBlockParserRuleCall_8_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fork__ChildAssignment_8"
-
-
-    // $ANTLR start "rule__Block__NameAssignment_0"
-    // InternalConcurrLang.g:924:1: rule__Block__NameAssignment_0 : ( RULE_ID ) ;
-    public final void rule__Block__NameAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__Block__StatementsAssignment_3"
+    // InternalConcurrLang.g:808:1: rule__Block__StatementsAssignment_3 : ( ruleStatements ) ;
+    public final void rule__Block__StatementsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:928:1: ( ( RULE_ID ) )
-            // InternalConcurrLang.g:929:2: ( RULE_ID )
+            // InternalConcurrLang.g:812:1: ( ( ruleStatements ) )
+            // InternalConcurrLang.g:813:2: ( ruleStatements )
             {
-            // InternalConcurrLang.g:929:2: ( RULE_ID )
-            // InternalConcurrLang.g:930:3: RULE_ID
+            // InternalConcurrLang.g:813:2: ( ruleStatements )
+            // InternalConcurrLang.g:814:3: ruleStatements
             {
-             before(grammarAccess.getBlockAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getBlockAccess().getNameIDTerminalRuleCall_0_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Block__NameAssignment_0"
-
-
-    // $ANTLR start "rule__Block__StatementsAssignment_2"
-    // InternalConcurrLang.g:939:1: rule__Block__StatementsAssignment_2 : ( ruleStatements ) ;
-    public final void rule__Block__StatementsAssignment_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalConcurrLang.g:943:1: ( ( ruleStatements ) )
-            // InternalConcurrLang.g:944:2: ( ruleStatements )
-            {
-            // InternalConcurrLang.g:944:2: ( ruleStatements )
-            // InternalConcurrLang.g:945:3: ruleStatements
-            {
-             before(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_2_0()); 
+             before(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
             ruleStatements();
 
             state._fsp--;
 
-             after(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_2_0()); 
+             after(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_3_0()); 
 
             }
 
@@ -2827,21 +2477,21 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Block__StatementsAssignment_2"
+    // $ANTLR end "rule__Block__StatementsAssignment_3"
 
 
     // $ANTLR start "rule__Action__NameAssignment"
-    // InternalConcurrLang.g:954:1: rule__Action__NameAssignment : ( RULE_ID ) ;
+    // InternalConcurrLang.g:823:1: rule__Action__NameAssignment : ( RULE_ID ) ;
     public final void rule__Action__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalConcurrLang.g:958:1: ( ( RULE_ID ) )
-            // InternalConcurrLang.g:959:2: ( RULE_ID )
+            // InternalConcurrLang.g:827:1: ( ( RULE_ID ) )
+            // InternalConcurrLang.g:828:2: ( RULE_ID )
             {
-            // InternalConcurrLang.g:959:2: ( RULE_ID )
-            // InternalConcurrLang.g:960:3: RULE_ID
+            // InternalConcurrLang.g:828:2: ( RULE_ID )
+            // InternalConcurrLang.g:829:3: RULE_ID
             {
              before(grammarAccess.getActionAccess().getNameIDTerminalRuleCall_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2881,9 +2531,8 @@ public class InternalConcurrLangParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000100010L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000000C0000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000100000L});
 
 }

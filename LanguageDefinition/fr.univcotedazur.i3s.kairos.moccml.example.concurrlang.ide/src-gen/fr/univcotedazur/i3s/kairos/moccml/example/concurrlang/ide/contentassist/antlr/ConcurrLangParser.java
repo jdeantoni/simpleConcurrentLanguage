@@ -41,10 +41,8 @@ public class ConcurrLangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getJoinAccess().getNameAssignment_0_0(), "rule__Join__NameAssignment_0_0");
 			builder.put(grammarAccess.getJoinAccess().getForkAssignment_3(), "rule__Join__ForkAssignment_3");
 			builder.put(grammarAccess.getForkAccess().getNameAssignment_1(), "rule__Fork__NameAssignment_1");
-			builder.put(grammarAccess.getForkAccess().getParentAssignment_5(), "rule__Fork__ParentAssignment_5");
-			builder.put(grammarAccess.getForkAccess().getChildAssignment_8(), "rule__Fork__ChildAssignment_8");
-			builder.put(grammarAccess.getBlockAccess().getNameAssignment_0(), "rule__Block__NameAssignment_0");
-			builder.put(grammarAccess.getBlockAccess().getStatementsAssignment_2(), "rule__Block__StatementsAssignment_2");
+			builder.put(grammarAccess.getForkAccess().getForkedBlocksAssignment_3(), "rule__Fork__ForkedBlocksAssignment_3");
+			builder.put(grammarAccess.getBlockAccess().getStatementsAssignment_3(), "rule__Block__StatementsAssignment_3");
 			builder.put(grammarAccess.getActionAccess().getNameAssignment(), "rule__Action__NameAssignment");
 		}
 	}

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "';'", "':'", "'join'", "'('", "')'", "'fork'", "'parent'", "'->'", "'child'", "'{'", "'}'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "';'", "':'", "'join'", "'('", "')'", "'fork'", "'|'", "'->'", "'{'", "'}'"
     };
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
@@ -41,7 +41,6 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
     public static final int RULE_INT=5;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__20=20;
-    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -267,11 +266,11 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
                 {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==EOF||LA2_1==RULE_ID||LA2_1==11||LA2_1==13||LA2_1==16||LA2_1==21) ) {
-                    alt2=1;
-                }
-                else if ( (LA2_1==12) ) {
+                if ( (LA2_1==12) ) {
                     alt2=3;
+                }
+                else if ( (LA2_1==EOF||LA2_1==RULE_ID||LA2_1==11||LA2_1==13||LA2_1==16||LA2_1==20) ) {
+                    alt2=1;
                 }
                 else {
                     NoViableAltException nvae =
@@ -630,31 +629,25 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFork"
-    // InternalConcurrLang.g:232:1: ruleFork returns [EObject current=null] : (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'parent' otherlv_4= '->' ( (lv_parent_5_0= ruleBlock ) ) otherlv_6= 'child' otherlv_7= '->' ( (lv_child_8_0= ruleBlock ) ) ) ;
+    // InternalConcurrLang.g:232:1: ruleFork returns [EObject current=null] : (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_forkedBlocks_3_0= ruleBlock ) )+ ) ;
     public final EObject ruleFork() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
-        Token otherlv_7=null;
-        EObject lv_parent_5_0 = null;
-
-        EObject lv_child_8_0 = null;
+        EObject lv_forkedBlocks_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalConcurrLang.g:238:2: ( (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'parent' otherlv_4= '->' ( (lv_parent_5_0= ruleBlock ) ) otherlv_6= 'child' otherlv_7= '->' ( (lv_child_8_0= ruleBlock ) ) ) )
-            // InternalConcurrLang.g:239:2: (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'parent' otherlv_4= '->' ( (lv_parent_5_0= ruleBlock ) ) otherlv_6= 'child' otherlv_7= '->' ( (lv_child_8_0= ruleBlock ) ) )
+            // InternalConcurrLang.g:238:2: ( (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_forkedBlocks_3_0= ruleBlock ) )+ ) )
+            // InternalConcurrLang.g:239:2: (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_forkedBlocks_3_0= ruleBlock ) )+ )
             {
-            // InternalConcurrLang.g:239:2: (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'parent' otherlv_4= '->' ( (lv_parent_5_0= ruleBlock ) ) otherlv_6= 'child' otherlv_7= '->' ( (lv_child_8_0= ruleBlock ) ) )
-            // InternalConcurrLang.g:240:3: otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' otherlv_3= 'parent' otherlv_4= '->' ( (lv_parent_5_0= ruleBlock ) ) otherlv_6= 'child' otherlv_7= '->' ( (lv_child_8_0= ruleBlock ) )
+            // InternalConcurrLang.g:239:2: (otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_forkedBlocks_3_0= ruleBlock ) )+ )
+            // InternalConcurrLang.g:240:3: otherlv_0= 'fork' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_forkedBlocks_3_0= ruleBlock ) )+
             {
             otherlv_0=(Token)match(input,16,FOLLOW_8); 
 
@@ -690,83 +683,59 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getForkAccess().getColonKeyword_2());
             		
-            otherlv_3=(Token)match(input,17,FOLLOW_11); 
+            // InternalConcurrLang.g:266:3: ( (lv_forkedBlocks_3_0= ruleBlock ) )+
+            int cnt7=0;
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-            			newLeafNode(otherlv_3, grammarAccess.getForkAccess().getParentKeyword_3());
-            		
-            otherlv_4=(Token)match(input,18,FOLLOW_12); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_4());
-            		
-            // InternalConcurrLang.g:274:3: ( (lv_parent_5_0= ruleBlock ) )
-            // InternalConcurrLang.g:275:4: (lv_parent_5_0= ruleBlock )
-            {
-            // InternalConcurrLang.g:275:4: (lv_parent_5_0= ruleBlock )
-            // InternalConcurrLang.g:276:5: lv_parent_5_0= ruleBlock
-            {
-
-            					newCompositeNode(grammarAccess.getForkAccess().getParentBlockParserRuleCall_5_0());
-            				
-            pushFollow(FOLLOW_13);
-            lv_parent_5_0=ruleBlock();
-
-            state._fsp--;
+                if ( (LA7_0==17) ) {
+                    alt7=1;
+                }
 
 
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getForkRule());
-            					}
-            					set(
-            						current,
-            						"parent",
-            						lv_parent_5_0,
-            						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Block");
-            					afterParserOrEnumRuleCall();
-            				
+                switch (alt7) {
+            	case 1 :
+            	    // InternalConcurrLang.g:267:4: (lv_forkedBlocks_3_0= ruleBlock )
+            	    {
+            	    // InternalConcurrLang.g:267:4: (lv_forkedBlocks_3_0= ruleBlock )
+            	    // InternalConcurrLang.g:268:5: lv_forkedBlocks_3_0= ruleBlock
+            	    {
 
-            }
+            	    					newCompositeNode(grammarAccess.getForkAccess().getForkedBlocksBlockParserRuleCall_3_0());
+            	    				
+            	    pushFollow(FOLLOW_11);
+            	    lv_forkedBlocks_3_0=ruleBlock();
 
-
-            }
-
-            otherlv_6=(Token)match(input,19,FOLLOW_11); 
-
-            			newLeafNode(otherlv_6, grammarAccess.getForkAccess().getChildKeyword_6());
-            		
-            otherlv_7=(Token)match(input,18,FOLLOW_12); 
-
-            			newLeafNode(otherlv_7, grammarAccess.getForkAccess().getHyphenMinusGreaterThanSignKeyword_7());
-            		
-            // InternalConcurrLang.g:301:3: ( (lv_child_8_0= ruleBlock ) )
-            // InternalConcurrLang.g:302:4: (lv_child_8_0= ruleBlock )
-            {
-            // InternalConcurrLang.g:302:4: (lv_child_8_0= ruleBlock )
-            // InternalConcurrLang.g:303:5: lv_child_8_0= ruleBlock
-            {
-
-            					newCompositeNode(grammarAccess.getForkAccess().getChildBlockParserRuleCall_8_0());
-            				
-            pushFollow(FOLLOW_2);
-            lv_child_8_0=ruleBlock();
-
-            state._fsp--;
+            	    state._fsp--;
 
 
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getForkRule());
-            					}
-            					set(
-            						current,
-            						"child",
-            						lv_child_8_0,
-            						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Block");
-            					afterParserOrEnumRuleCall();
-            				
+            	    					if (current==null) {
+            	    						current = createModelElementForParent(grammarAccess.getForkRule());
+            	    					}
+            	    					add(
+            	    						current,
+            	    						"forkedBlocks",
+            	    						lv_forkedBlocks_3_0,
+            	    						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Block");
+            	    					afterParserOrEnumRuleCall();
+            	    				
 
-            }
+            	    }
 
 
-            }
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt7 >= 1 ) break loop7;
+                        EarlyExitException eee =
+                            new EarlyExitException(7, input);
+                        throw eee;
+                }
+                cnt7++;
+            } while (true);
 
 
             }
@@ -791,7 +760,7 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBlock"
-    // InternalConcurrLang.g:324:1: entryRuleBlock returns [EObject current=null] : iv_ruleBlock= ruleBlock EOF ;
+    // InternalConcurrLang.g:289:1: entryRuleBlock returns [EObject current=null] : iv_ruleBlock= ruleBlock EOF ;
     public final EObject entryRuleBlock() throws RecognitionException {
         EObject current = null;
 
@@ -799,8 +768,8 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalConcurrLang.g:324:46: (iv_ruleBlock= ruleBlock EOF )
-            // InternalConcurrLang.g:325:2: iv_ruleBlock= ruleBlock EOF
+            // InternalConcurrLang.g:289:46: (iv_ruleBlock= ruleBlock EOF )
+            // InternalConcurrLang.g:290:2: iv_ruleBlock= ruleBlock EOF
             {
              newCompositeNode(grammarAccess.getBlockRule()); 
             pushFollow(FOLLOW_1);
@@ -827,91 +796,80 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBlock"
-    // InternalConcurrLang.g:331:1: ruleBlock returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) )? otherlv_1= '{' ( (lv_statements_2_0= ruleStatements ) )+ otherlv_3= '}' ) ;
+    // InternalConcurrLang.g:296:1: ruleBlock returns [EObject current=null] : (otherlv_0= '|' (otherlv_1= '->' )? otherlv_2= '{' ( (lv_statements_3_0= ruleStatements ) )+ otherlv_4= '}' ) ;
     public final EObject ruleBlock() throws RecognitionException {
         EObject current = null;
 
-        Token lv_name_0_0=null;
+        Token otherlv_0=null;
         Token otherlv_1=null;
-        Token otherlv_3=null;
-        EObject lv_statements_2_0 = null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        EObject lv_statements_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalConcurrLang.g:337:2: ( ( ( (lv_name_0_0= RULE_ID ) )? otherlv_1= '{' ( (lv_statements_2_0= ruleStatements ) )+ otherlv_3= '}' ) )
-            // InternalConcurrLang.g:338:2: ( ( (lv_name_0_0= RULE_ID ) )? otherlv_1= '{' ( (lv_statements_2_0= ruleStatements ) )+ otherlv_3= '}' )
+            // InternalConcurrLang.g:302:2: ( (otherlv_0= '|' (otherlv_1= '->' )? otherlv_2= '{' ( (lv_statements_3_0= ruleStatements ) )+ otherlv_4= '}' ) )
+            // InternalConcurrLang.g:303:2: (otherlv_0= '|' (otherlv_1= '->' )? otherlv_2= '{' ( (lv_statements_3_0= ruleStatements ) )+ otherlv_4= '}' )
             {
-            // InternalConcurrLang.g:338:2: ( ( (lv_name_0_0= RULE_ID ) )? otherlv_1= '{' ( (lv_statements_2_0= ruleStatements ) )+ otherlv_3= '}' )
-            // InternalConcurrLang.g:339:3: ( (lv_name_0_0= RULE_ID ) )? otherlv_1= '{' ( (lv_statements_2_0= ruleStatements ) )+ otherlv_3= '}'
+            // InternalConcurrLang.g:303:2: (otherlv_0= '|' (otherlv_1= '->' )? otherlv_2= '{' ( (lv_statements_3_0= ruleStatements ) )+ otherlv_4= '}' )
+            // InternalConcurrLang.g:304:3: otherlv_0= '|' (otherlv_1= '->' )? otherlv_2= '{' ( (lv_statements_3_0= ruleStatements ) )+ otherlv_4= '}'
             {
-            // InternalConcurrLang.g:339:3: ( (lv_name_0_0= RULE_ID ) )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            otherlv_0=(Token)match(input,17,FOLLOW_12); 
 
-            if ( (LA7_0==RULE_ID) ) {
-                alt7=1;
+            			newLeafNode(otherlv_0, grammarAccess.getBlockAccess().getVerticalLineKeyword_0());
+            		
+            // InternalConcurrLang.g:308:3: (otherlv_1= '->' )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
+
+            if ( (LA8_0==18) ) {
+                alt8=1;
             }
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-                    // InternalConcurrLang.g:340:4: (lv_name_0_0= RULE_ID )
+                    // InternalConcurrLang.g:309:4: otherlv_1= '->'
                     {
-                    // InternalConcurrLang.g:340:4: (lv_name_0_0= RULE_ID )
-                    // InternalConcurrLang.g:341:5: lv_name_0_0= RULE_ID
-                    {
-                    lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_14); 
+                    otherlv_1=(Token)match(input,18,FOLLOW_13); 
 
-                    					newLeafNode(lv_name_0_0, grammarAccess.getBlockAccess().getNameIDTerminalRuleCall_0_0());
-                    				
-
-                    					if (current==null) {
-                    						current = createModelElement(grammarAccess.getBlockRule());
-                    					}
-                    					setWithLastConsumed(
-                    						current,
-                    						"name",
-                    						lv_name_0_0,
-                    						"org.eclipse.xtext.common.Terminals.ID");
-                    				
-
-                    }
-
+                    				newLeafNode(otherlv_1, grammarAccess.getBlockAccess().getHyphenMinusGreaterThanSignKeyword_1());
+                    			
 
                     }
                     break;
 
             }
 
-            otherlv_1=(Token)match(input,20,FOLLOW_15); 
+            otherlv_2=(Token)match(input,19,FOLLOW_14); 
 
-            			newLeafNode(otherlv_1, grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_1());
+            			newLeafNode(otherlv_2, grammarAccess.getBlockAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalConcurrLang.g:361:3: ( (lv_statements_2_0= ruleStatements ) )+
-            int cnt8=0;
-            loop8:
+            // InternalConcurrLang.g:318:3: ( (lv_statements_3_0= ruleStatements ) )+
+            int cnt9=0;
+            loop9:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA8_0==RULE_ID||LA8_0==13||LA8_0==16) ) {
-                    alt8=1;
+                if ( (LA9_0==RULE_ID||LA9_0==13||LA9_0==16) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt9) {
             	case 1 :
-            	    // InternalConcurrLang.g:362:4: (lv_statements_2_0= ruleStatements )
+            	    // InternalConcurrLang.g:319:4: (lv_statements_3_0= ruleStatements )
             	    {
-            	    // InternalConcurrLang.g:362:4: (lv_statements_2_0= ruleStatements )
-            	    // InternalConcurrLang.g:363:5: lv_statements_2_0= ruleStatements
+            	    // InternalConcurrLang.g:319:4: (lv_statements_3_0= ruleStatements )
+            	    // InternalConcurrLang.g:320:5: lv_statements_3_0= ruleStatements
             	    {
 
-            	    					newCompositeNode(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_2_0());
+            	    					newCompositeNode(grammarAccess.getBlockAccess().getStatementsStatementsParserRuleCall_3_0());
             	    				
-            	    pushFollow(FOLLOW_15);
-            	    lv_statements_2_0=ruleStatements();
+            	    pushFollow(FOLLOW_14);
+            	    lv_statements_3_0=ruleStatements();
 
             	    state._fsp--;
 
@@ -922,7 +880,7 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"statements",
-            	    						lv_statements_2_0,
+            	    						lv_statements_3_0,
             	    						"fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Statements");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -934,17 +892,17 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt8 >= 1 ) break loop8;
+            	    if ( cnt9 >= 1 ) break loop9;
                         EarlyExitException eee =
-                            new EarlyExitException(8, input);
+                            new EarlyExitException(9, input);
                         throw eee;
                 }
-                cnt8++;
+                cnt9++;
             } while (true);
 
-            otherlv_3=(Token)match(input,21,FOLLOW_2); 
+            otherlv_4=(Token)match(input,20,FOLLOW_2); 
 
-            			newLeafNode(otherlv_3, grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_3());
+            			newLeafNode(otherlv_4, grammarAccess.getBlockAccess().getRightCurlyBracketKeyword_4());
             		
 
             }
@@ -969,7 +927,7 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAction"
-    // InternalConcurrLang.g:388:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
+    // InternalConcurrLang.g:345:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
     public final EObject entryRuleAction() throws RecognitionException {
         EObject current = null;
 
@@ -977,8 +935,8 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalConcurrLang.g:388:47: (iv_ruleAction= ruleAction EOF )
-            // InternalConcurrLang.g:389:2: iv_ruleAction= ruleAction EOF
+            // InternalConcurrLang.g:345:47: (iv_ruleAction= ruleAction EOF )
+            // InternalConcurrLang.g:346:2: iv_ruleAction= ruleAction EOF
             {
              newCompositeNode(grammarAccess.getActionRule()); 
             pushFollow(FOLLOW_1);
@@ -1005,7 +963,7 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAction"
-    // InternalConcurrLang.g:395:1: ruleAction returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
+    // InternalConcurrLang.g:352:1: ruleAction returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
     public final EObject ruleAction() throws RecognitionException {
         EObject current = null;
 
@@ -1015,14 +973,14 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalConcurrLang.g:401:2: ( ( (lv_name_0_0= RULE_ID ) ) )
-            // InternalConcurrLang.g:402:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalConcurrLang.g:358:2: ( ( (lv_name_0_0= RULE_ID ) ) )
+            // InternalConcurrLang.g:359:2: ( (lv_name_0_0= RULE_ID ) )
             {
-            // InternalConcurrLang.g:402:2: ( (lv_name_0_0= RULE_ID ) )
-            // InternalConcurrLang.g:403:3: (lv_name_0_0= RULE_ID )
+            // InternalConcurrLang.g:359:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalConcurrLang.g:360:3: (lv_name_0_0= RULE_ID )
             {
-            // InternalConcurrLang.g:403:3: (lv_name_0_0= RULE_ID )
-            // InternalConcurrLang.g:404:4: lv_name_0_0= RULE_ID
+            // InternalConcurrLang.g:360:3: (lv_name_0_0= RULE_ID )
+            // InternalConcurrLang.g:361:4: lv_name_0_0= RULE_ID
             {
             lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -1077,10 +1035,9 @@ public class InternalConcurrLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000008002L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000100010L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000000C0000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000212010L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000112010L});
 
 }

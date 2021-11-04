@@ -170,22 +170,13 @@ public interface ConcurrLangPackage extends EPackage
   int FORK__NAME = STATEMENTS__NAME;
 
   /**
-   * The feature id for the '<em><b>Parent</b></em>' containment reference.
+   * The feature id for the '<em><b>Forked Blocks</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORK__PARENT = STATEMENTS_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Child</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORK__CHILD = STATEMENTS_FEATURE_COUNT + 1;
+  int FORK__FORKED_BLOCKS = STATEMENTS_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Fork</em>' class.
@@ -194,7 +185,7 @@ public interface ConcurrLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORK_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 2;
+  int FORK_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.BlockImpl <em>Block</em>}' class.
@@ -207,22 +198,13 @@ public interface ConcurrLangPackage extends EPackage
   int BLOCK = 4;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BLOCK__NAME = 0;
-
-  /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BLOCK__STATEMENTS = 1;
+  int BLOCK__STATEMENTS = 0;
 
   /**
    * The number of structural features of the '<em>Block</em>' class.
@@ -231,7 +213,7 @@ public interface ConcurrLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BLOCK_FEATURE_COUNT = 2;
+  int BLOCK_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.ActionImpl <em>Action</em>}' class.
@@ -336,26 +318,15 @@ public interface ConcurrLangPackage extends EPackage
   EClass getFork();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getParent <em>Parent</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getForkedBlocks <em>Forked Blocks</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parent</em>'.
-   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getParent()
+   * @return the meta object for the containment reference list '<em>Forked Blocks</em>'.
+   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getForkedBlocks()
    * @see #getFork()
    * @generated
    */
-  EReference getFork_Parent();
-
-  /**
-   * Returns the meta object for the containment reference '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getChild <em>Child</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Child</em>'.
-   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Fork#getChild()
-   * @see #getFork()
-   * @generated
-   */
-  EReference getFork_Child();
+  EReference getFork_ForkedBlocks();
 
   /**
    * Returns the meta object for class '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block <em>Block</em>}'.
@@ -366,17 +337,6 @@ public interface ConcurrLangPackage extends EPackage
    * @generated
    */
   EClass getBlock();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block#getName()
-   * @see #getBlock()
-   * @generated
-   */
-  EAttribute getBlock_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block#getStatements <em>Statements</em>}'.
@@ -487,20 +447,12 @@ public interface ConcurrLangPackage extends EPackage
     EClass FORK = eINSTANCE.getFork();
 
     /**
-     * The meta object literal for the '<em><b>Parent</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Forked Blocks</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORK__PARENT = eINSTANCE.getFork_Parent();
-
-    /**
-     * The meta object literal for the '<em><b>Child</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FORK__CHILD = eINSTANCE.getFork_Child();
+    EReference FORK__FORKED_BLOCKS = eINSTANCE.getFork_ForkedBlocks();
 
     /**
      * The meta object literal for the '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.BlockImpl <em>Block</em>}' class.
@@ -511,14 +463,6 @@ public interface ConcurrLangPackage extends EPackage
      * @generated
      */
     EClass BLOCK = eINSTANCE.getBlock();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BLOCK__NAME = eINSTANCE.getBlock_Name();
 
     /**
      * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.

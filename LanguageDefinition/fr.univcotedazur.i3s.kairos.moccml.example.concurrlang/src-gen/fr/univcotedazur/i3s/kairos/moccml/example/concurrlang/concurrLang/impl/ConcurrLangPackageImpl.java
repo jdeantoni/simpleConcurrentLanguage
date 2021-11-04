@@ -215,20 +215,9 @@ public class ConcurrLangPackageImpl extends EPackageImpl implements ConcurrLangP
    * @generated
    */
   @Override
-  public EReference getFork_Parent()
+  public EReference getFork_ForkedBlocks()
   {
     return (EReference)forkEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getFork_Child()
-  {
-    return (EReference)forkEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -248,20 +237,9 @@ public class ConcurrLangPackageImpl extends EPackageImpl implements ConcurrLangP
    * @generated
    */
   @Override
-  public EAttribute getBlock_Name()
-  {
-    return (EAttribute)blockEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getBlock_Statements()
   {
-    return (EReference)blockEClass.getEStructuralFeatures().get(1);
+    return (EReference)blockEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -316,11 +294,9 @@ public class ConcurrLangPackageImpl extends EPackageImpl implements ConcurrLangP
     createEReference(joinEClass, JOIN__FORK);
 
     forkEClass = createEClass(FORK);
-    createEReference(forkEClass, FORK__PARENT);
-    createEReference(forkEClass, FORK__CHILD);
+    createEReference(forkEClass, FORK__FORKED_BLOCKS);
 
     blockEClass = createEClass(BLOCK);
-    createEAttribute(blockEClass, BLOCK__NAME);
     createEReference(blockEClass, BLOCK__STATEMENTS);
 
     actionEClass = createEClass(ACTION);
@@ -370,11 +346,9 @@ public class ConcurrLangPackageImpl extends EPackageImpl implements ConcurrLangP
     initEReference(getJoin_Fork(), this.getFork(), null, "fork", null, 0, 1, Join.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(forkEClass, Fork.class, "Fork", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFork_Parent(), this.getBlock(), null, "parent", null, 0, 1, Fork.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFork_Child(), this.getBlock(), null, "child", null, 0, 1, Fork.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFork_ForkedBlocks(), this.getBlock(), null, "forkedBlocks", null, 0, -1, Fork.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBlock_Statements(), this.getStatements(), null, "statements", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

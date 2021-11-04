@@ -79,7 +79,7 @@ public class ConcurrLangSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     Block returns Block
 	 *
 	 * Constraint:
-	 *     (name=ID? statements+=Statements+)
+	 *     statements+=Statements+
 	 */
 	protected void sequence_Block(ISerializationContext context, Block semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -92,22 +92,10 @@ public class ConcurrLangSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     Fork returns Fork
 	 *
 	 * Constraint:
-	 *     (name=ID parent=Block child=Block)
+	 *     (name=ID forkedBlocks+=Block+)
 	 */
 	protected void sequence_Fork(ISerializationContext context, Fork semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ConcurrLangPackage.Literals.STATEMENTS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConcurrLangPackage.Literals.STATEMENTS__NAME));
-			if (transientValues.isValueTransient(semanticObject, ConcurrLangPackage.Literals.FORK__PARENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConcurrLangPackage.Literals.FORK__PARENT));
-			if (transientValues.isValueTransient(semanticObject, ConcurrLangPackage.Literals.FORK__CHILD) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConcurrLangPackage.Literals.FORK__CHILD));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getForkAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getForkAccess().getParentBlockParserRuleCall_5_0(), semanticObject.getParent());
-		feeder.accept(grammarAccess.getForkAccess().getChildBlockParserRuleCall_8_0(), semanticObject.getChild());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

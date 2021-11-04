@@ -131,21 +131,15 @@ public class ConcurrLangGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cParentKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cParentAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParentBlockParserRuleCall_5_0 = (RuleCall)cParentAssignment_5.eContents().get(0);
-		private final Keyword cChildKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cChildAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cChildBlockParserRuleCall_8_0 = (RuleCall)cChildAssignment_8.eContents().get(0);
+		private final Assignment cForkedBlocksAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cForkedBlocksBlockParserRuleCall_3_0 = (RuleCall)cForkedBlocksAssignment_3.eContents().get(0);
 		
 		//Fork:
-		//    "fork" name=ID ":" "parent" "->" parent= Block "child" "->" child= Block
+		//    "fork" name=ID ":" (forkedBlocks+=Block)+
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"fork" name=ID ":" "parent" "->" parent= Block "child" "->" child= Block
+		//"fork" name=ID ":" (forkedBlocks+=Block)+
 		public Group getGroup() { return cGroup; }
 		
 		//"fork"
@@ -160,65 +154,47 @@ public class ConcurrLangGrammarAccess extends AbstractElementFinder.AbstractGram
 		//":"
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
-		//"parent"
-		public Keyword getParentKeyword_3() { return cParentKeyword_3; }
-		
-		//"->"
-		public Keyword getHyphenMinusGreaterThanSignKeyword_4() { return cHyphenMinusGreaterThanSignKeyword_4; }
-		
-		//parent= Block
-		public Assignment getParentAssignment_5() { return cParentAssignment_5; }
+		//(forkedBlocks+=Block)+
+		public Assignment getForkedBlocksAssignment_3() { return cForkedBlocksAssignment_3; }
 		
 		//Block
-		public RuleCall getParentBlockParserRuleCall_5_0() { return cParentBlockParserRuleCall_5_0; }
-		
-		//"child"
-		public Keyword getChildKeyword_6() { return cChildKeyword_6; }
-		
-		//"->"
-		public Keyword getHyphenMinusGreaterThanSignKeyword_7() { return cHyphenMinusGreaterThanSignKeyword_7; }
-		
-		//child= Block
-		public Assignment getChildAssignment_8() { return cChildAssignment_8; }
-		
-		//Block
-		public RuleCall getChildBlockParserRuleCall_8_0() { return cChildBlockParserRuleCall_8_0; }
+		public RuleCall getForkedBlocksBlockParserRuleCall_3_0() { return cForkedBlocksBlockParserRuleCall_3_0; }
 	}
 	public class BlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Block");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStatementsStatementsParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cVerticalLineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatementsStatementsParserRuleCall_3_0 = (RuleCall)cStatementsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Block:
-		// (name=ID)?"{" (statements+=Statements)+ "}"
+		// "|" ("->")? "{"(statements+=Statements)+"}"
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(name=ID)?"{" (statements+=Statements)+ "}"
+		//"|" ("->")? "{"(statements+=Statements)+"}"
 		public Group getGroup() { return cGroup; }
 		
-		//(name=ID)?
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//"|"
+		public Keyword getVerticalLineKeyword_0() { return cVerticalLineKeyword_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		//("->")?
+		public Keyword getHyphenMinusGreaterThanSignKeyword_1() { return cHyphenMinusGreaterThanSignKeyword_1; }
 		
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//(statements+=Statements)+
-		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
+		public Assignment getStatementsAssignment_3() { return cStatementsAssignment_3; }
 		
 		//Statements
-		public RuleCall getStatementsStatementsParserRuleCall_2_0() { return cStatementsStatementsParserRuleCall_2_0; }
+		public RuleCall getStatementsStatementsParserRuleCall_3_0() { return cStatementsStatementsParserRuleCall_3_0; }
 		
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class ActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.ConcurrLang.Action");
@@ -323,7 +299,7 @@ public class ConcurrLangGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//Fork:
-	//    "fork" name=ID ":" "parent" "->" parent= Block "child" "->" child= Block
+	//    "fork" name=ID ":" (forkedBlocks+=Block)+
 	//;
 	public ForkElements getForkAccess() {
 		return pFork;
@@ -334,7 +310,7 @@ public class ConcurrLangGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//Block:
-	// (name=ID)?"{" (statements+=Statements)+ "}"
+	// "|" ("->")? "{"(statements+=Statements)+"}"
 	//;
 	public BlockElements getBlockAccess() {
 		return pBlock;

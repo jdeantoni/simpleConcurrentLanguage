@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block#getName <em>Name</em>}</li>
  *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block#getStatements <em>Statements</em>}</li>
  * </ul>
  *
@@ -26,28 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Block extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.ConcurrLangPackage#getBlock_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Block#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
    * The list contents are of type {@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Statements}.

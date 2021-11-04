@@ -18,20 +18,18 @@ package concurrLang
 			Relation Coincides(self.statements->first().execute, firstStatementUniqueExecution)
 			
 	 context Fork
-	 	inv forCausalities1:
-	 		Relation Precedes(self.execute, self.parent.statements->first().execute)
-	 	inv forCausalities2:
-	 		Relation Precedes(self.execute, self.child.statements->first().execute)
+	 	inv forkCausalities1:
+	 		let firstBlockExec : Event = Expression Inf(self.forkedBlocks.statements.execute) in
+	 		Relation Precedes(self.execute, firstBlockExec)
 	 
 	 context Join
 	 	inv joinCausalities1:
-	 		Relation Precedes(self.fork.parent.statements->last().execute, self.execute)
-	 		
-	 	inv joinCausalities2:
-	 		Relation Precedes(self.fork.child.statements->last().execute, self.execute)
+	 	let lastBlockExec : Event = Expression Sup(self.fork.forkedBlocks.statements.execute) in
+	 		Relation Precedes(lastBlockExec, self.execute)
 	 		
 	 	inv executesWhenForksFinishes:
 	 		Relation Coincides(self.fork.finish, self.execute)
+	 
 	 context _Block
 	 	inv sequentialOrder:
 	 		Relation Precedes(self.statements.execute)  

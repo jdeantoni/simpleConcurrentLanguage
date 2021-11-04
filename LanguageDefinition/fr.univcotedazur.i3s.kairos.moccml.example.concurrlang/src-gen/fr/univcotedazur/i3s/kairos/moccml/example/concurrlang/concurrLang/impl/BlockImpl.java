@@ -9,7 +9,6 @@ import fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.Statem
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.BlockImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.univcotedazur.i3s.kairos.moccml.example.concurrlang.concurrLang.impl.BlockImpl#getStatements <em>Statements</em>}</li>
  * </ul>
  *
@@ -39,26 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class BlockImpl extends MinimalEObjectImpl.Container implements Block
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -88,31 +65,6 @@ public class BlockImpl extends MinimalEObjectImpl.Container implements Block
   protected EClass eStaticClass()
   {
     return ConcurrLangPackage.Literals.BLOCK;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ConcurrLangPackage.BLOCK__NAME, oldName, name));
   }
 
   /**
@@ -156,8 +108,6 @@ public class BlockImpl extends MinimalEObjectImpl.Container implements Block
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.BLOCK__NAME:
-        return getName();
       case ConcurrLangPackage.BLOCK__STATEMENTS:
         return getStatements();
     }
@@ -175,9 +125,6 @@ public class BlockImpl extends MinimalEObjectImpl.Container implements Block
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.BLOCK__NAME:
-        setName((String)newValue);
-        return;
       case ConcurrLangPackage.BLOCK__STATEMENTS:
         getStatements().clear();
         getStatements().addAll((Collection<? extends Statements>)newValue);
@@ -196,9 +143,6 @@ public class BlockImpl extends MinimalEObjectImpl.Container implements Block
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.BLOCK__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case ConcurrLangPackage.BLOCK__STATEMENTS:
         getStatements().clear();
         return;
@@ -216,29 +160,10 @@ public class BlockImpl extends MinimalEObjectImpl.Container implements Block
   {
     switch (featureID)
     {
-      case ConcurrLangPackage.BLOCK__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ConcurrLangPackage.BLOCK__STATEMENTS:
         return statements != null && !statements.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //BlockImpl

@@ -20,6 +20,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class ConcurrLangSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ConcurrLangGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Block_HyphenMinusGreaterThanSignKeyword_1_q;
 	protected AbstractElementAlias match_Join_LeftParenthesisKeyword_2_q;
 	protected AbstractElementAlias match_Join_RightParenthesisKeyword_4_q;
 	protected AbstractElementAlias match_Statements_SemicolonKeyword_1_q;
@@ -27,6 +28,7 @@ public class ConcurrLangSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ConcurrLangGrammarAccess) access;
+		match_Block_HyphenMinusGreaterThanSignKeyword_1_q = new TokenAlias(false, true, grammarAccess.getBlockAccess().getHyphenMinusGreaterThanSignKeyword_1());
 		match_Join_LeftParenthesisKeyword_2_q = new TokenAlias(false, true, grammarAccess.getJoinAccess().getLeftParenthesisKeyword_2());
 		match_Join_RightParenthesisKeyword_4_q = new TokenAlias(false, true, grammarAccess.getJoinAccess().getRightParenthesisKeyword_4());
 		match_Statements_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getStatementsAccess().getSemicolonKeyword_1());
@@ -44,7 +46,9 @@ public class ConcurrLangSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Join_LeftParenthesisKeyword_2_q.equals(syntax))
+			if (match_Block_HyphenMinusGreaterThanSignKeyword_1_q.equals(syntax))
+				emit_Block_HyphenMinusGreaterThanSignKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Join_LeftParenthesisKeyword_2_q.equals(syntax))
 				emit_Join_LeftParenthesisKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Join_RightParenthesisKeyword_4_q.equals(syntax))
 				emit_Join_RightParenthesisKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -54,6 +58,17 @@ public class ConcurrLangSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     '->'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) '|' (ambiguity) '{' statements+=Statements
+	 */
+	protected void emit_Block_HyphenMinusGreaterThanSignKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     '('?
@@ -83,8 +98,8 @@ public class ConcurrLangSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ';'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     child=Block (ambiguity) (rule end)
 	 *     fork=[Fork|ID] ')'? (ambiguity) (rule end)
+	 *     forkedBlocks+=Block (ambiguity) (rule end)
 	 *     name=ID (ambiguity) (rule end)
 	 */
 	protected void emit_Statements_SemicolonKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
