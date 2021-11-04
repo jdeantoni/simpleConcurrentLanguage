@@ -4,7 +4,7 @@ a very simple concurrent language to illustrate GEMOC model of concurrency
 Let us consider the "Simple" language composed by *Statement*s where a statement can be an *Action*, a *Fork* with its parent and child *Block* of statements that can be executed concurrently, or a *Join*. The Figure below provides a program written in the Simple language together with its abstract syntax tree. 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/6162718/140297582-6ef7d191-21a2-4787-810a-7bf48732f018.png" alt="a Simple program" width="300"/>
+  <img src="https://user-images.githubusercontent.com/6162718/140297596-26760e2d-26be-4337-bc31-5d478fe25f0b.png" alt="a Simple program" width="300"/>
 </p>
 
 
@@ -12,7 +12,7 @@ Let us consider the "Simple" language composed by *Statement*s where a statement
 In this example, a computer scientist intuitively figures out that the *B;C* sequence is not ordered with the *D;E* one. The role of the concurrency model is to symbolically capture the different interleaving that can possibly appear in a program. To illustrate, the Figure below represents in extension the possible interleaving between all actions of the illustrative program presented above.
  
 <p align="center">
-<img src="https://user-images.githubusercontent.com/6162718/140297596-26760e2d-26be-4337-bc31-5d478fe25f0b.png" alt="possible interleavings in the Simple program" width="500"/> 
+<img src="https://user-images.githubusercontent.com/6162718/140297582-6ef7d191-21a2-4787-810a-7bf48732f018.png" alt="possible interleavings in the Simple program" width="500"/> 
 </p>
 
 
